@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["caseyfalk.com", "tournament.caseyfalk.com", "127.0.0.1"]
 
 
 # Application definition
@@ -57,8 +57,12 @@ WSGI_APPLICATION = 'TournamentPlanner.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "TournamentPlanner_db",
+        "USER": "tournament_user",
+        "PASSWORD": "tournament_pass",
+        "HOST": "127.0.0.1",
+        "PORT": "", #Empty string implies default.
     }
 }
 
@@ -75,6 +79,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+#Directory Setup
+TEMPLATE_DIRS = (
+ os.path.join(BASE_DIR, "templates"),
+)
+STATICFILES_DIRS = (
+ os.path.join(BASE_DIR, "static"),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
